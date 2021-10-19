@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: | 
           git clone git://github.com/kanaka/noVNC
-          cp self.pem ./noVNC/untils/
+          cp self.pem ./noVNC/utils/
           sudo apt-get install tightvncserver
           vncserver :1 &
           chmod +x ./noVNC/utils/launch.sh
