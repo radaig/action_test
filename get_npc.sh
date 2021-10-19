@@ -11,8 +11,8 @@ if [[ -z "$USER_PASS" ]]; then
 fi
 
 echo "### Install NPC ###"
-wget -q https://github.com/ehang-io/nps/releases/download/v0.26.10/freebsd_amd64_client.tar.gz && tar -zxvf freebsd_amd64_client.tar.gz
-cd npc && chmod +x ./npc
+wget -q https://github.com/ehang-io/nps/releases/download/v0.26.10/linux_amd64_client.tar.gz && tar -zxvf linux_amd64_client.tar.gz
+chmod +x ./npc
 
 echo "### Update user: $USER password ###"
 echo -e "$USER_PASS\n$USER_PASS" | sudo passwd "$USER"
