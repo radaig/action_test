@@ -23,12 +23,21 @@ jobs:
         shell: bash
         run: |
           echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE"
-          pwd
-          ls -l
           chmod +x *.sh && ./get_npc.sh
-          echo -e "USER:$USER \n"
-          echo `whoami`
-          echo `date`
+        env:
+          NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
+          USER_PASS: ${{ secrets.USER_PASS }}
+  
+      - name: No VNC
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: | 
+          git clone git://github.com/kanaka/noVNC
+          cp self.pem ./noVNC/untils/
+          sudo apt-get install tightvncserver
+          vncserver :1 &
+          chmod +x ./noVNC/utils/launch.sh
+          ./noVNC/utils/launch.sh --vnc 0.0.0.0:6008 &
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
