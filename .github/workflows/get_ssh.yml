@@ -17,16 +17,13 @@ jobs:
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}
 
-      - name: infomation
+      - name: Start SSH via NPC
         working-directory: ${{github.workspace}}
         shell: bash
         run: |
           echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE,BUILD_TYPE:$BUILD_TYPE"
           ls -l
-      
-      - name: Start SSH via NPC
-        if: ${{ failure() }}
-        run: curl -sL https://github.com/radaig/action_test/raw/main/get_npc.sh | bash
+          chmod +x *.sh && ./get_npc.sh
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
