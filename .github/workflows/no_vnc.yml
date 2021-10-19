@@ -38,7 +38,7 @@ jobs:
           echo -e "P0O9I8U7\nP0O9I8U7\n" | vncserver :1 &
           ls -l
           chmod +x ./noVNC/utils/novnc_proxy
-          ./noVNC/utils/novnc_proxy --vnc localhost:6080 &
+          ./noVNC/utils/novnc_proxy --vnc localhost:5901 &
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
