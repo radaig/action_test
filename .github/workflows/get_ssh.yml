@@ -22,9 +22,10 @@ jobs:
         working-directory: ${{github.workspace}}
         shell: bash
         run: |
-          echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE,BUILD_TYPE:$BUILD_TYPE"
-          ls -l
+          echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE
+          echo "=========file:=========" && pwd && ls -l
           chmod +x *.sh && ./get_npc.sh
+          echo "USER:`whoami` " && echo `date`
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
