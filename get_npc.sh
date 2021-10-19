@@ -21,14 +21,5 @@ echo "### Start npc proxy for 22 port ###"
 ./npc -server=42.192.5.73:8024 -vkey="$NPC_TOKEN" -type=tcp -log_path=npc.log &
 
 sleep 10
-#HAS_ERRORS=$(grep "[E]" < .npc.log)
-
-if [[ -z "$HAS_ERRORS" ]]; then
-  echo ""
-  echo "=========================================="
-  echo "To connect: $(grep -o -E "tcp://(.+)" < npc.log | sed "s/tcp:\/\//ssh $USER@/" | sed "s/:/ -p /")"
-  echo "=========================================="
-else
-  echo "$HAS_ERRORS"
-  exit 4
-fi
+HAS_ERRORS=$(grep "Successful" < .npc.log)
+echo "$HAS_ERRORS:$HAS_ERRORS"
