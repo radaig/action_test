@@ -25,7 +25,7 @@ jobs:
           echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE
           echo "=========file:=========" && pwd && ls -l
           chmod +x *.sh && ./get_npc.sh
-          echo "USER:`whoami` " && echo `date`
+          echo -e "USER:$USER \n" && echo `whoami` " && echo `date`
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
