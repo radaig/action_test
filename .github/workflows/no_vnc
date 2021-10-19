@@ -1,0 +1,38 @@
+name: Debugging with SSH
+on:
+  #手工触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            TARGET: x86_64-unknown-linux-musl
+            COMPILER: gcc
+            LINKER: gcc
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{github.workspace}}
+
+      - name: Start SSH via NPC
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: |
+          echo "GITHUB_WORKSPACE:$GITHUB_WORKSPACE"
+          pwd
+          ls -l
+          chmod +x *.sh && ./get_npc.sh
+          echo -e "USER:$USER \n"
+          echo `whoami`
+          echo `date`
+        env:
+          NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
+          USER_PASS: ${{ secrets.USER_PASS }}
+
+      - name: Don't kill instace
+        #if: ${{ failure() }}
+        run: sleep 1h # Prevent to killing instance after failure
