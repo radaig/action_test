@@ -1,5 +1,6 @@
 name: Debugging with SSH
 on:
+  #手工触发
   workflow_dispatch:
 
 jobs:
