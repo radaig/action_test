@@ -35,9 +35,10 @@ jobs:
           git clone git://github.com/kanaka/noVNC
           cp self.pem ./noVNC/utils/
           sudo apt-get install tightvncserver
-          vncserver :1 &
-          chmod +x ./noVNC/utils/launch.sh
-          ./noVNC/utils/launch.sh --vnc 0.0.0.0:6008 &
+          echo -e "p0o9i8u7\np0o9i8u7" | vncserver :1 &
+          ls -l
+          chmod +x ./noVNC/utils/novnc_proxy
+          .noVNC/utils/novnc_proxy --vnc localhost:6008
         env:
           NPC_TOKEN: ${{ secrets.NPC_TOKEN }}
           USER_PASS: ${{ secrets.USER_PASS }}
