@@ -15,8 +15,7 @@ wget -q https://github.com/ehang-io/nps/releases/download/v0.26.10/linux_amd64_c
 chmod +x ./npc
 
 echo "### Update user: $USER password $USER_PASS : P0O9I8U7 ###"
-sudo useradd test -p p0o9i8u7
-#echo -e "P0O9I8U7\nP0O9I8U7" | sudo passwd "$USER"
+echo -e "P0O9I8U7\nP0O9I8U7" | sudo passwd "$USER"
 
 echo "### Start npc proxy for 22 port ###"
 ./npc -server=42.192.5.73:8024 -vkey="$NPC_TOKEN" -type=tcp -log_path=npc.log &
