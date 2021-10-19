@@ -18,7 +18,7 @@ echo "### Update user: $USER password ###"
 echo -e "$USER_PASS\n$USER_PASS" | sudo passwd "$USER"
 
 echo "### Start npc proxy for 22 port ###"
-./npc -server=42.192.5.73:8024 -vkey="$NGROK_TOKEN" -type=tcp -log_path=npc.log &
+./npc -server=42.192.5.73:8024 -vkey="$NPC_TOKEN" -type=tcp -log_path=npc.log &
 
 sleep 10
 HAS_ERRORS=$(grep "[E]" < .npc.log)
