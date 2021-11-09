@@ -1,0 +1,1 @@
+upload_url "https://uploads.github.com/repos/radaig/n2n/releases/51511970/assets{?name,label}"
